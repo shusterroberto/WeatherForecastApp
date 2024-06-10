@@ -1,0 +1,24 @@
+<div class="form-container">
+  <form>
+    <div>
+      <h2>Previsão do Tempo</h2>      
+
+      <div class="form-group">
+        <label for="username">Cidade:</label>
+        <input [(ngModel)]="city" type="text" id="city" name="city" placeholder="Digite o nome da cidade">
+      </div>
+      
+      <button (click)="getWeatherForecast()" type="submit">Consultar</button>
+      
+      <div *ngIf="forecast">
+        <h3>Previsão para {{ city }}</h3>
+        <ul>
+          <li *ngFor="let item of forecast.list">
+            {{ item.dt_txt }} - {{ item.main.temp }}°C - {{ item.weather[0].description }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </form>
+</div>
